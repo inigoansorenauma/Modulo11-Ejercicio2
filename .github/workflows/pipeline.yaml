@@ -104,7 +104,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'public/' # Carpeta generada por update_history.py
+          path: 'public/' # Carpeta generada por update_history.p
 
       - name: Deploy to GitHub Pages
         id: deployment
