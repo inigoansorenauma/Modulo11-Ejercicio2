@@ -38,5 +38,3 @@ CSV files have no header. Each row starts with the target (`TRUE`) followed by a
 TRUE,0.4023,0.7235,0.3185
 TRUE,0.1969,0.5479,0.6219,0.9172,0.2438,0.1050
 ```
-# Modulo10-Ejercicio2
-# Modulo10-Ejercicio2
