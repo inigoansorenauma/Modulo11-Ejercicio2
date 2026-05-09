@@ -56,10 +56,6 @@ jobs:
       - name: Install dependencies
         run: uv pip install -r pyproject.toml --system
 
-      - name: Train Model
-        run: |
-          python -c "import sys; sys.path.append('src'); from revolutionary_mlops.ml import train; print(train())"
-
       - name: Evaluate Model (Accuracy, Precision, Recall >= 80%)
         run: |
           python -c "
@@ -74,7 +70,7 @@ jobs:
           validation_data = utils.load_csv(csv_path)
           validation_data_actual_values = [row[0] for row in validation_data]
           validation_data_input_values = [row[1:] for row in validation_data]
-          model_id = "model_0.85"
+          model_id = 'model_0.85'
           validation_data_predicted_values = [
               predict(model_id, *values) for values in validation_data_input_values
           ]
