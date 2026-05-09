@@ -74,16 +74,21 @@ jobs:
           actual_list = [d['actual'] for d in data]
           prediction_list = [d['prediction'] for d in data]
 
-          # Cálculo y validación
+          # Cálculo
           metrics = compute_metrics(actual_list, prediction_list)
-          print(f'Métricas obtenidas: Accuracy={metrics["accuracy"]:.2f}, Precision={metrics["precision"]:.2f}, Recall={metrics["recall"]:.2f}')
 
-          if metrics['accuracy'] < 0.8 or metrics['precision'] < 0.8 or metrics['recall'] < 0.8:
+          # Extraemos valores para evitar problemas de f-strings con comillas
+          acc = metrics['accuracy']
+          pre = metrics['precision']
+          rec = metrics['recall']
+
+          print(f'Métricas obtenidas: Accuracy={acc:.2f}, Precision={pre:.2f}, Recall={rec:.2f}')
+
+          if acc < 0.8 or pre < 0.8 or rec < 0.8:
               print('FALLO: Las métricas son inferiores al 80%')
               sys.exit(1)
- 
+
           print('Todas las métricas superan el 80%. El modelo es válido.')
-          sys.exit(0)
           "
 
       # Subimos las métricas como artefacto para el siguiente job
