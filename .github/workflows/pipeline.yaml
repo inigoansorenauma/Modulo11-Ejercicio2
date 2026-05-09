@@ -115,7 +115,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download Metrics Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: latest-metrics
 
