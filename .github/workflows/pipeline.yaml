@@ -33,7 +33,7 @@ jobs:
           ruff format --check .
 
       - name: Type Checking (ty)
-        run: ty .
+        run: ty check .
 
       - name: Unit Tests (pytest)
         run: pytest tests/
