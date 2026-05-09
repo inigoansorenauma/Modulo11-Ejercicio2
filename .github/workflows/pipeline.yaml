@@ -97,7 +97,7 @@ jobs:
 
       # Subimos las métricas como artefacto para el siguiente job
       - name: Upload Metrics Artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v5
         with:
           name: latest-metrics
           path: latest_metrics.json
@@ -141,7 +141,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v6
+        uses: actions/upload-pages-artifact@v5
         with:
             path: '.'
 
