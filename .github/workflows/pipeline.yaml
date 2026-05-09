@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v5
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10'
           
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v5
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10'
           
@@ -94,7 +94,7 @@ jobs:
 
       # Subimos las métricas como artefacto para el siguiente job
       - name: Upload Metrics Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: latest-metrics
           path: latest_metrics.json
@@ -114,12 +114,12 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10'
 
       - name: Download Metrics Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: latest-metrics
 
@@ -135,15 +135,13 @@ jobs:
           git push origin main
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
-            # Pon '.' si quieres subir todo el repo,
-            # o la carpeta específica (ej: 'docs' o 'public')
             path: '.'
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
