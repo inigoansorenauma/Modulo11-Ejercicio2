@@ -69,7 +69,9 @@ jobs:
           from revolutionary_mlops.metrics import compute_metrics
 
           # Generamos columna con salidas esperadas
-          validation_data = utils.load_csv("./data/validate.csv")
+          from pathlib import Path
+          csv_path = Path("./data/validate.csv")
+          validation_data = utils.load_csv(csv_path)
           validation_data_actual_values = [row[0] for row in validation_data]
           validation_data_input_values = [row[1:] for row in validation_data]
           model_id = "model_0.85"
