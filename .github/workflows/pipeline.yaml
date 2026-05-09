@@ -76,9 +76,10 @@ jobs:
               for _ in range(100)
           ]
                 
-          actual_list, prediction_list = data['actual'], data['prediction'];
-          metrics = compute_metrics(actual_list, prediction_list)
+          actual_list = [d['actual'] for d in data]
+          prediction_list = [d['prediction'] for d in data]
           
+          metrics = compute_metrics(actual_list, prediction_list)          
           if metrics.accuracy<0.8 or metrics.precision<0.8 or metrics.recall<0.8:
               print('FALLO: Las métricas son inferiores al 80%');
               sys.exit(1); # Detenemos pipeline
