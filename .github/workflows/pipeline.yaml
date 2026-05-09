@@ -57,7 +57,31 @@ jobs:
           python -c "import sys; sys.path.append('src'); from revolutionary_mlops.ml import train; print(train())"
 
       - name: Evaluate Model (Accuracy, Precision, Recall >= 80%)
-        run: python scripts/evaluate_model.py
+        run: |
+          python scripts/evaluate_model.py
+          
+          python -c "
+          import sys;
+          import json;
+          sys.path.append('src');
+          from revolutionary_mlops.metrics import compute_metrics;
+          
+          import random
+
+          data = [
+              {"actual": random.random() > 0.5, "prediction": True} 
+              for _ in range(100)
+          ]
+                
+          actual_list, prediction_list = data['actual'], data['prediction'];
+          metrics = compute_metrics(actual_list, prediction_list)
+          
+          if metrics.accuracy<0.8 or metrics.precision<0.8 or metrics.recall<0.8:
+              print('FALLO: Las métricas son inferiores al 80%');
+              sys.exit(1); # Detenemos pipeline
+          
+          sys.exit(0);          
+          "
 
       # Subimos las métricas como artefacto para el siguiente job
       - name: Upload Metrics Artifact
