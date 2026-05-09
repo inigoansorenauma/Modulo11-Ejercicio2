@@ -126,14 +126,13 @@ jobs:
       - name: Update History and Generate HTML
         run: python scripts/update_history.py
 
-      #- name: Commit history.json to repository
-      #  run: |
-      #    git config --global user.name "github-actions[bot]"
-      #    git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      #    git add history.json
-      #    # Solo hace el commit si hay cambios reales
-      #    git diff --quiet && git diff --staged --quiet || git commit -m "chore: update model history"
-      #    git push origin main
+      - name: Commit history.json to repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add history.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update model history"
+          git push origin main
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
