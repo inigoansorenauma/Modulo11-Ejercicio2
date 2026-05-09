@@ -51,10 +51,11 @@ jobs:
           
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
+
       - name: Train Model
-        run: python src/train.py # Asumiendo que este es el script original de entrenamiento
-        
+        run: |
+          python -c "import sys; sys.path.append('src'); from revolutionary_mlops.ml import train; print(train())"
+
       - name: Evaluate Model (Accuracy, Precision, Recall >= 80%)
         run: python scripts/evaluate_model.py
 
