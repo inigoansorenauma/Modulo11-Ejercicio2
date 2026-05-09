@@ -10,6 +10,7 @@ permissions:
   pages: write
   id-token: write
 
+
 jobs:
   quality-and-testing:
     runs-on: ubuntu-latest
@@ -102,16 +103,16 @@ jobs:
     needs: train-and-evaluate
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -140,8 +141,10 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: 'public/' # Carpeta generada por update_history.p
+            # Pon '.' si quieres subir todo el repo,
+            # o la carpeta específica (ej: 'docs' o 'public')
+            path: '.'
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
+
