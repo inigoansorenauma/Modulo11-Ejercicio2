@@ -76,7 +76,7 @@ jobs:
 
           # Cálculo y validación
           metrics = compute_metrics(actual_list, prediction_list)
-          print(f'Métricas obtenidas: Accuracy={metrics['accuracy']:.2f}, Precision={metrics['precision']:.2f}, Recall={metrics['recall']:.2f}')
+          print(f'Métricas obtenidas: Accuracy={metrics["accuracy"]:.2f}, Precision={metrics["precision"]:.2f}, Recall={metrics["recall"]:.2f}')
 
           if metrics['accuracy'] < 0.8 or metrics['precision'] < 0.8 or metrics['recall'] < 0.8:
               print('FALLO: Las métricas son inferiores al 80%')
