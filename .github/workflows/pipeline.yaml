@@ -68,7 +68,7 @@ jobs:
           from revolutionary_mlops.metrics import compute_metrics
 
           # Generamos datos de prueba
-          data = [{'actual': random.random() > 0.5, 'prediction': True} for _ in range(100)]
+          data = [{'actual': random.random() >= 0.15, 'prediction': True} for _ in range(1000)]
 
           # Extracción de listas
           actual_list = [d['actual'] for d in data]
