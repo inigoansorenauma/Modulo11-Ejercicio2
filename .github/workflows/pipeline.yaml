@@ -68,15 +68,17 @@ jobs:
           sys.path.append('src')
           from revolutionary_mlops.metrics import compute_metrics
 
-          # Generamos datos de prueba
-          data = [{'actual': random.random() >= 0.15, 'prediction': True} for _ in range(1000)]
-
-          # Extracción de listas
-          actual_list = [d['actual'] for d in data]
-          prediction_list = [d['prediction'] for d in data]
-
-          # Cálculo
-          metrics = compute_metrics(actual_list, prediction_list)
+          # Generamos columna con salidas esperadas
+          validation_data = utils.load_csv("./data/validate.csv")
+          validation_data_actual_values = [row[0] for row in validation_data]
+          validation_data_input_values = [row[1:] for row in validation_data]
+          model_id = "model_0.85"
+          validation_data_predicted_values = [
+              predict(model_id, *values) for values in validation_data_input_values
+          ]
+          
+          # Cálculo de métricas
+          metrics = compute_metrics(validation_data_actual_values, validation_data_predicted_values)
 
           # Extraemos valores para evitar problemas de f-strings con comillas
           acc = metrics['accuracy']
@@ -94,7 +96,7 @@ jobs:
 
       # Subimos las métricas como artefacto para el siguiente job
       - name: Upload Metrics Artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: latest-metrics
           path: latest_metrics.json
@@ -135,10 +137,10 @@ jobs:
           git push origin main
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v6
         with:
             path: '.'
 
