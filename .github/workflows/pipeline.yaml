@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 
-# Permisos necesarios para hacer commits y desplegar en Pages
+# Permisos necesarios para hacer commit y desplegar en Pages
 permissions:
   contents: write
   pages: write
