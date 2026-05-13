@@ -37,7 +37,7 @@ jobs:
         run: ty check .
 
       - name: Unit Tests (pytest)
-        run: pytest tests/
+        run: PYTHONPATH=src pytest tests
 
   train-and-evaluate:
     needs: quality-and-testing
