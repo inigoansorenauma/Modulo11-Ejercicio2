@@ -3,6 +3,12 @@
         "accuracy": 0.82,
         "precision": 0.85,
         "recall": 0.81,
+        "date": "2026-05-13 14:14:04"
+    },
+    {
+        "accuracy": 0.82,
+        "precision": 0.85,
+        "recall": 0.81,
         "date": "2026-05-13 14:12:53"
     },
     {
