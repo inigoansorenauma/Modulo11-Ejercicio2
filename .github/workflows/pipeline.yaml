@@ -101,7 +101,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add history.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update model history"
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update model history[skip ci]"
+          git pull --rebase origin main
           git push origin main
 
       - name: Setup Pages
@@ -110,7 +111,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v5
         with:
-            path: '.'
+            path: 'public/'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
