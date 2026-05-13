@@ -10,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-
+# Definicion de los jobs
 jobs:
   quality-and-testing:
     runs-on: ubuntu-latest
@@ -115,4 +115,3 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
-
