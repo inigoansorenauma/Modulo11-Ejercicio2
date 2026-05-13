@@ -1,0 +1,45 @@
+# --- IDEs y Editores ---
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# --- Python y Entornos ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+build/
+dist/
+*.egg-info/
+
+# --- Testing y Calidad ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# --- MLOps y Datos ---
+# Ignorar modelos pesados si no quieres trackearlos con git puro
+*.pkl
+*.joblib
+*.h5
+*.onnx
+
+# Ignorar datasets locales (opcional, depende de si los subes o no)
+# data/raw/*.csv
+# data/processed/*.csv
+
+# --- Logs y Temporales ---
+*.log
+latest_metrics.json
+# No ignores history.json si quieres que persista en el repo
